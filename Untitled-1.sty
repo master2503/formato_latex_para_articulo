@@ -6,7 +6,7 @@
 \usepackage{graphicx}
 \geometry{a4paper, margin=1in}
 
-% Nueva portada
+% Portada
 \title{\textbf{Resolución de un Problema de Función Lineal: Análisis y Desarrollo Computacional}}
 \author{
 Javier Eduardo Artunduaga Peña \\ 
@@ -15,6 +15,7 @@ Leonardo Esteban Aragonez Bobadilla \\
 Alan Alexander Cadena Pastrana \\ 
 Fabian Andres Duran Neira \\ 
 Juan David Claros Cachaya \\
+johan sebastian camacho aragones\\
 Docente: Leonardo Fabio Narváez López
 }
 \date{Edición de Septiembre, 2024}
@@ -24,13 +25,19 @@ Docente: Leonardo Fabio Narváez López
 \maketitle
 
 \begin{abstract}
-Este trabajo presenta un análisis matemático y computacional de un problema de función lineal, abordando su desarrollo de manera estructurada y utilizando herramientas computacionales en Python para verificar los resultados.
+Este trabajo presenta un análisis matemático y computacional de un problema de función lineal, abordando su desarrollo de manera estructurada y utilizando herramientas computacionales en Python para verificar los resultados. Se describe el planteamiento del problema, la deducción de la ecuación lineal, su representación gráfica y se extraen conclusiones basadas en la solución obtenida. \\
+\textbf{Palabras clave:} Función lineal, pendiente, álgebra, Python, solución computacional.
 \end{abstract}
 
 \section{Introducción}
-(Coloca aquí la introducción del documento principal en formato de artículo.)
+Las funciones lineales desempeñan un papel crucial en el ámbito matemático y en numerosas disciplinas aplicadas como la economía, la ingeniería y la física. Su estructura sencilla pero poderosa permite modelar relaciones proporcionales y resolver problemas en diversos contextos.
+
+En este trabajo, se analizará un problema de función lineal donde se requiere determinar su ecuación a partir de valores específicos. El objetivo es no solo encontrar la función lineal que satisface las condiciones dadas, sino también validar la solución utilizando herramientas computacionales como Python.
 
 \begin{multicols}{2}
+
+\section{Justificación del Problema}
+El estudio de funciones lineales es fundamental en la educación matemática, ya que permite comprender conceptos esenciales como la pendiente y el intercepto. Este trabajo busca demostrar un enfoque estructurado y el uso de herramientas computacionales para complementar el análisis algebraico.
 
 \section{Planteamiento del Problema}
 Se nos proporciona la información siguiente:
@@ -38,7 +45,6 @@ Se nos proporciona la información siguiente:
     \item $f(80) = 80$
     \item $f(120) = f(100) - 40$
 \end{itemize}
-
 Nuestro objetivo es encontrar la ecuación de la función lineal $f(x)$ y calcular el valor de $f(120) + f(100)$.
 
 \section{Desarrollo Matemático}
@@ -58,7 +64,7 @@ m = \frac{y_2 - y_1}{x_2 - x_1}
 \]
 
 
-Sustituyendo:
+Sustituyendo los valores conocidos:
 
 
 \[
@@ -66,7 +72,7 @@ m = \frac{40 - 80}{100 - 80} = -2
 \]
 
 
-Encontramos el intercepto $b$:
+El intercepto $b$ se encuentra como:
 
 
 \[
@@ -74,7 +80,7 @@ Encontramos el intercepto $b$:
 \]
 
 
-La ecuación final es:
+La ecuación de la función lineal es:
 
 
 \[
@@ -83,8 +89,44 @@ f(x) = -2x + 240
 
 
 
-\section{Cálculo y Validación}
-Utilizando Python para graficar y verificar los resultados:
+\section{Tablas de Verdad}
+Las tablas de verdad verifican la validez de proposiciones lógicas. A continuación, se presentan las principales operaciones lógicas:
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+P & Q & $P \land Q$ \\
+\hline
+V & V & V \\
+V & F & F \\
+F & V & F \\
+F & F & F \\
+\hline
+\end{tabular}
+\quad
+\begin{tabular}{|c|c|c|}
+\hline
+P & Q & $P \lor Q$ \\
+\hline
+V & V & V \\
+V & F & V \\
+F & V & V \\
+F & F & F \\
+\hline
+\end{tabular}
+\quad
+\begin{tabular}{|c|c|}
+\hline
+P & $\neg P$ \\
+\hline
+V & F \\
+F & V \\
+\hline
+\end{tabular}
+\end{center}
+
+\section{Implementación en Python}
+Para verificar los cálculos:
 \begin{verbatim}
 import numpy as np
 import matplotlib.pyplot as plt
@@ -95,23 +137,23 @@ def funcion_lineal(x):
 x_vals = np.linspace(50, 150, 100)
 y_vals = funcion_lineal(x_vals)
 
-plt.figure(figsize=(8, 6))
-plt.plot(x_vals, y_vals, label="f(x) = -2x + 240", color='blue')
+plt.plot(x_vals, y_vals, label="f(x) = -2x + 240")
 plt.scatter([80, 100, 120], [80, funcion_lineal(100), funcion_lineal(120)], color='red')
-plt.axhline(0, color='black', linewidth=0.5)
-plt.axvline(0, color='black', linewidth=0.5)
-plt.grid(True, linestyle='--', alpha=0.7)
-plt.xlabel("x")
-plt.ylabel("f(x)")
 plt.legend()
-plt.title("Gráfica de la Función Lineal")
 plt.show()
 \end{verbatim}
 
 \end{multicols}
 
-\appendix
-\section{Apéndice: Resolución Ampliada}
-Aquí puedes incluir un análisis detallado o información adicional, según lo consideres necesario.
+\section{Conclusión}
+Este estudio ha demostrado cómo resolver un problema de función lineal de manera estructurada, aplicando conceptos de álgebra y validando los resultados mediante Python. La combinación de métodos analíticos y computacionales es efectiva para la enseñanza matemática.
+
+\section*{Referencias}
+\begin{enumerate}
+    \item Larson, R. (2017). Algebra y trigonometría. McGraw-Hill Interamericana.
+    \item Stewart, J. (2013). Cálculo: Conceptos y Contextos. Cengage Learning.
+    \item Lay, D. (2016). Álgebra Lineal y sus aplicaciones. Pearson Educación.
+    \item Russell, B. (1910). Introduction to Mathematical Logic. Cambridge University Press.
+\end{enumerate}
 
 \end{document}
