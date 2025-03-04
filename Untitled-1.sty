@@ -1,0 +1,117 @@
+\documentclass[twocolumn, 12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+\usepackage{geometry}
+\usepackage{graphicx}
+\geometry{a4paper, margin=1in}
+
+% Nueva portada
+\title{\textbf{Resolución de un Problema de Función Lineal: Análisis y Desarrollo Computacional}}
+\author{
+Javier Eduardo Artunduaga Peña \\ 
+Santiago Alarcón Vargas \\ 
+Leonardo Esteban Aragonez Bobadilla \\ 
+Alan Alexander Cadena Pastrana \\ 
+Fabian Andres Duran Neira \\ 
+Juan David Claros Cachaya \\
+Docente: Leonardo Fabio Narváez López
+}
+\date{Edición de Septiembre, 2024}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Este trabajo presenta un análisis matemático y computacional de un problema de función lineal, abordando su desarrollo de manera estructurada y utilizando herramientas computacionales en Python para verificar los resultados.
+\end{abstract}
+
+\section{Introducción}
+(Coloca aquí la introducción del documento principal en formato de artículo.)
+
+\begin{multicols}{2}
+
+\section{Planteamiento del Problema}
+Se nos proporciona la información siguiente:
+\begin{itemize}
+    \item $f(80) = 80$
+    \item $f(120) = f(100) - 40$
+\end{itemize}
+
+Nuestro objetivo es encontrar la ecuación de la función lineal $f(x)$ y calcular el valor de $f(120) + f(100)$.
+
+\section{Desarrollo Matemático}
+La forma general de una función lineal es:
+
+
+\[
+f(x) = mx + b
+\]
+
+
+Donde la pendiente $m$ se calcula como:
+
+
+\[
+m = \frac{y_2 - y_1}{x_2 - x_1}
+\]
+
+
+Sustituyendo:
+
+
+\[
+m = \frac{40 - 80}{100 - 80} = -2
+\]
+
+
+Encontramos el intercepto $b$:
+
+
+\[
+80 = -2(80) + b \implies b = 240
+\]
+
+
+La ecuación final es:
+
+
+\[
+f(x) = -2x + 240
+\]
+
+
+
+\section{Cálculo y Validación}
+Utilizando Python para graficar y verificar los resultados:
+\begin{verbatim}
+import numpy as np
+import matplotlib.pyplot as plt
+
+def funcion_lineal(x):
+    return -2 * x + 240
+
+x_vals = np.linspace(50, 150, 100)
+y_vals = funcion_lineal(x_vals)
+
+plt.figure(figsize=(8, 6))
+plt.plot(x_vals, y_vals, label="f(x) = -2x + 240", color='blue')
+plt.scatter([80, 100, 120], [80, funcion_lineal(100), funcion_lineal(120)], color='red')
+plt.axhline(0, color='black', linewidth=0.5)
+plt.axvline(0, color='black', linewidth=0.5)
+plt.grid(True, linestyle='--', alpha=0.7)
+plt.xlabel("x")
+plt.ylabel("f(x)")
+plt.legend()
+plt.title("Gráfica de la Función Lineal")
+plt.show()
+\end{verbatim}
+
+\end{multicols}
+
+\appendix
+\section{Apéndice: Resolución Ampliada}
+Aquí puedes incluir un análisis detallado o información adicional, según lo consideres necesario.
+
+\end{document}
